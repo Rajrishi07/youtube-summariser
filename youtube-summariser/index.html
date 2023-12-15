@@ -5,7 +5,7 @@
 		<title>Youtube Summariser</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="../static/assets/css/main.css" />
 	</head>
 	<body class="is-preload">
 		<main>
@@ -18,14 +18,19 @@
 
 
 		<!-- Signup Form -->
-			<form id="url" method="post" action="#">
-				<input type="url" name="url" id="url" placeholder="Paste your youtube URL" />
-				<input type="button" value="Summarise" />
+			<form method="POST" action="{{ url_for('transcribe') }}">
+				<input type="text" name="video_id" placeholder="Enter YouTube Video ID">
+				<button type="submit">Submit</button>
 			</form>
+
 
             <header>
                 <h2>Summarized Content:</h2>
-                 <div id="outputBox"></div>
+                 <div id="outputBox" style="overflow-y: auto; ">
+					 {%if summary %}
+					 	<p style="color:black;">{{summary}}</p>
+					 {%endif%}
+				 </div>
             </header>
 
 		</main>	
@@ -44,7 +49,7 @@
 			</footer>
 
 		<!-- Scripts -->
-			<script src="assets/js/main.js"></script>
+			<script src="../static/assets/js/main.js"></script>
 		
 
 	</body>
