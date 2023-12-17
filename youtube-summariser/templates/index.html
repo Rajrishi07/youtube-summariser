@@ -27,9 +27,11 @@
             <header>
                 <h2>Summarized Content:</h2>
                  <div id="outputBox" style="overflow-y: auto; ">
-					 {%if summary %}
-					 	<p style="color:black;">{{summary}}</p>
-					 {%endif%}
+					 {% if summary %}
+						{% for line in summary.split("->") %}
+							<p style="color: black;">{{ line }}</p>
+						{% endfor %}
+					{% endif %}
 				 </div>
             </header>
 
